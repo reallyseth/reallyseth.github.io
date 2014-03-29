@@ -1,0 +1,17 @@
+markdown: rdiscount
+pygments: true
+permalink: /posts/:title
+rdiscount:
+  extensions: [smart]
+exclude: [ Gemfile, Gemfile.lock, gems, _assets, bower_components ]
+title : reallySeth
+production_url : http://reallyseth.com
+description: "iOS and Web Developer, thinker, coder, writer, spy."
+disqus_shortname: reallyseth
+analytics: UA-12569913-6
+gauges: 50f2b533613f5d7c8000000c
+author :
+  name : Seth Hein
+  github : reallyseth
+  twitter : reallyseth
+  email: info@reallyseth.com
