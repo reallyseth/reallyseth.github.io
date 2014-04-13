@@ -1,103 +1,154 @@
-Up
---------------
+# So Simple Theme
 
-Up is a clean and beautiful [Bootstrap](http://getbootstrap.com) based layout
-for [Jekyll](https://github.com/mojombo/jekyll).
+Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the followup to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes/) -- by designer slash illustrator [Michael Rose](http://mademistakes.com).
 
-This is designed to be an easy layout to modify for your own blog. It is
-based on [zachholman's](http://zachholman.com/) blog themes: the "old" one, now
-opensourced as [left](http://github.com/holman/left), and also in his actual
-theme, that's not opensource (I believe), but I stole some ideas anyway. I also
-took something from [jekyll-bootstrap](https://github.com/plusjade/jekyll-bootstrap),
-and, of course, I'm using [bootstrap](https://github.com/twitter/bootstrap) as
-a base for whole thing.
+## So Simple Theme is all about:
 
-![Up 2](http://f.cl.ly/items/1k0B3m21451e0G1i3u0F/up_v2.png)
+* Responsive templates. Looking good on mobile, tablet, and desktop.
+* Readable typography to make your words shine.
+* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
+* Minimal embellishments and subtle animations. 
+* Support for large images to call out your favorite posts.
+* Disqus comments if you choose to enable.
+* Tags for [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) for a better social sharing experience.
+* Vanilla [custom 404 page]({{ site.url }}/404.html) to get you started.
+* Stylesheets for Pygments and Coderay [syntax highlighting](http://mmistakes.github.io/articles/so-simple-theme/code-highlighting-post/) to make your code examples look snazzy.
+* Simple search that overlays results based on post title.
+* Grunt build script for easier theme development.
+* [Sitemap](https://github.com/mmistakes/so-simple-theme/blob/master/sitemap.xml) for search engines
 
-## Installation
+![screenshot of So Simple Theme](http://mmistakes.github.io/so-simple-theme/images/so-simple-theme-preview.jpg)
 
-- [Fork this repository](https://github.com/caarlos0/up/fork)
-- Rename it to `YOUR-USER.github.io`
-- Clone it: `git clone https://github.com/YOUR-USER/YOUR-USER.github.io`
-- With Ruby, bundler, Node.js and NPM previously installed, run the init script
-`bundle && rake init`;
-- Start it up in watch mode: `foreman start -f Procfile.dev`.
+General notes and suggestions for customizing So Simple Theme.
 
-You should have a server up and running locally at <http://localhost:4000>.
+---
+
+## Basic Setup for new Jekyll site
+
+1. [Install Bundler](http://bundler.io) `gem install bundler` and then install [Jekyll](http://jekyllrb.com) and all dependencies `bundle install`.
+2. Fork the [So Simple Theme repo](https://github.com/mmistakes/so-simple-theme/fork).
+3. Clone the repo you just forked and rename it.
+4. Edit `_config.yml` to personalize your site.
+5. Check out the sample posts in `_posts` to see examples for pulling in large feature images, assigning categories and tags, and other YAML data.
+6. Read the documentation below for further customization pointers and documentation.
+
+[Demo the Theme](http://mmistakes.github.io/so-simple-theme/)
+
+**Pro-tip:** Remove the sample posts in `_posts` and the `gh-pages` branch after cloning. There is a bunch of garbage in the `gh-pages` branch used for the theme's demo site.
+
+---
+
+## Setup for Existing Jekyll site
+
+1. Clone the following folders: `_includes`, `_layouts`, `assets`, and `images`.
+2. Clone the following files and personalize content as need: `about.md`, `articles.html`, `index.html`, `tags.html`, `feed.xml`, and `sitemap.xml`.
+3. Set the following variables in your `config.yml` file:
+
+``` yaml
+title:            Site Title
+description:      Site description for the metas.
+logo:             site-logo.png
+disqus_shortname: shortname
+search:           true
+# Your site's domain goes here. When working locally use localhost server leave blank
+# PS. If you set this wrong stylesheets and scripts won't load and most links will break.
+# PPS. If you leave it blank for local testing home links won't work, they'll be fine for live domains though.
+url:              http://localhost:4000
+
+# Owner/author information
+owner:
+  name:           Your Name
+  avatar:         your-photo.jpg
+  email:          your@email.com
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:
+  facebook:
+  github:
+  linkedin:
+  instagram:
+  tumblr:
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:    "http://plus.google.com/123123123123132123"
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# Links to include in top navigation
+# For external links add external: true
+links:
+  - title: About
+    url: /about
+  - title: Articles
+    url: /articles
+  - title: Google
+    url: http://google.com
+    external: true
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    America/New_York
+pygments:    true
+markdown:    kramdown
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title/
+```
+
+---
+
+## Folder Structure
+
+``` bash
+so-simple-theme/
+├── _includes/
+|    ├── browser-upgrade.html  #prompt to upgrade browser on < IE8
+|    ├── footer.html  #site footer
+|    ├── head.html  #site head
+|    ├── navigation.html #site navigation and masthead
+|    └── scripts.html  #jQuery, plugins, GA, etc.
+├── _layouts/
+|    ├── page.html  #page layout
+|    └── post.html  #post layout
+├── _posts/
+├── assets/
+|    ├── css/  #preprocessed less styles
+|    ├── fonts/  #icon webfonts
+|    ├── js/
+|    |   ├── _main.js  #main JavaScript file, plugin settings, etc
+|    |   ├── plugins  #jQuery plugins
+|    |   └── vendor/  #jQuery and Modernizr
+|    └── less/
+├── images  #images for posts and pages
+├── _config.yml  #Jekyll site options
+├── about.md  #about page
+├── articles.html  #lists all posts from latest to oldest
+├── index.html  #homepage. lists 10 latest posts
+├── tags.html  #lists all posts sorted by tag
+└── sitemap.xml  #autogenerated sitemap for search engines
+```
+
+---
 
 ## Customization
 
-Next you'll want to change a few things. The list of files you may want to
-change is the following:
+For full customization details and more information on the theme check out the [So Simple theme setup guide](http://mmistakes.github.io/so-simple-theme/theme-setup/).
 
-- [_config.yml](https://github.com/caarlos0/up/blob/gh-pages/_config.yml): Put
-your config there, almost everything will be up and running.
-- [about/index.html](https://github.com/caarlos0/up/blob/gh-pages/about/index.html):
-Well, that's about you, I would change it if I were you... OH WAIT!
-- [CNAME](https://github.com/caarlos0/up/blob/gh-pages/CNAME): If you're using
-this on GitHub Pages with a custom domain name, you might want to change this to be
-the domain you're going to use. All that should be in here is a
-domain name on the first line and nothing else (like: `example.com`).
-- [favicon.ico](https://github.com/caarlos0/up/blob/gh-pages/favicon.ico): This
-is a smaller version of my gravatar for use as the icon in your browser's
-address bar. You may change it to whatever you like. [Updating your icons][up-icons].
-- [apple-touch-icon.jpg](https://github.com/caarlos0/up/blob/gh-pages/apple-touch-icon.jpg):
-Again, this is my gravatar, and it shows up in iOS and various other apps
-that use this file as an "icon" for your site. [Updating your icons][up-icons].
+---
 
-[up-icons]: https://github.com/caarlos0/up#update-favicon-and-apple-precomposed-icons-based-on-gravatar
+## Questions?
 
-### Custom CSS/JS
+Having a problem getting something to work or want to know why I setup something in a certain way? Ping me on Twitter [@mmistakes](http://twitter.com/mmistakes) or [file a GitHub Issue](https://github.com/mmistakes/so-simple-theme/issues/new).
 
-Assets are now managed by bower. You could simply run `grunt` whenever you
-want to update your assets. `grunt watch` will also watch everything for
-changes.
+---
 
-Note: I'm not using any Jekyll asset pipeline because it's not supported
-by [GitHub Pages](http://pages.github.com), so, I prefer to do it by myself.
+## License
+
+This theme is free and open source software, distributed under the [GNU General Public License](LICENSE) version 2 or later. So feel free to to modify this theme to suit your needs. 
+
+If you'd like to give me credit somewhere on your blog or tweet a shout out to [@mmistakes](https://twitter.com/mmistakes), that would be pretty sweet.
 
 
-### Update `favicon` and `apple-precomposed` icons based on gravatar
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mmistakes/so-simple-theme/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-First, be sure you have the author email configured in `_config.yml`,
-then, just run:
-
-```sh
-rake icons
-```
-
-The script will generate your email hash and get your gravatar, then, using
-RMagick, it will create all needed icons.
-
-
-## Deployment
-
-You should deploy with [GitHub Pages](http://pages.github.com)- it's just
-easier.
-
-All you should have to do is to rename your repository on GitHub to be
-`username.github.io`. Since this is a Jekyll project, you
-should be able to see your new site at <http://username.github.io>.
-
-## Licensing
-
-This is [MIT](https://github.com/caarlos0/up/blob/master/LICENSE) with no
-added caveats, therefore feel free to use this on your site without
-linking back to me or using a disclaimer or anything silly like that.
-
-If you'd like give [me](http://github.com/caarlos0),
-[holman](http://github.com/holman)
-(from [left](http://github.com/holman/left) layout),
-[plusjade](https://github.com/plusjade)
-(from [jekyll-bootstrap](https://github.com/plusjade/jekyll-bootstrap)),
-[fat](https://github.com/fat) and [mdo](https://github.com/mdo) (from
-[bootstrap](https://github.com/twitter/bootstrap)) credit somewhere on your
-all-new blog or tweet a shout out to us, well hey, sure we'll take it.
-
-## Donate
-
-You can also thank me doing a donation =)
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DXEJBUD2KYT7L)
-
-Thanks.
