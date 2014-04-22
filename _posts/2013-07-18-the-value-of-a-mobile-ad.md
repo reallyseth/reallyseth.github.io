@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Value of a Mobile Ad"
-modified: 2013-07-18 10:23:47 -0500
+modified: 
 tags: [mobile]
 image:
   feature: 

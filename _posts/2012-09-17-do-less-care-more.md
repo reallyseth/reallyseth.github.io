@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Do Less, Care More"
-modified: 2012-09-17 10:19:55 -0500
+modified: 
 tags: [life]
 image:
   feature: 
