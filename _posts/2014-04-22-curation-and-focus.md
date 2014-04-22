@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Curation and Focus"
-modified: 2014-04-22 10:26:59 -0500
+modified: 
 tags: [life]
 image:
   feature: 
