@@ -3,8 +3,8 @@ layout: page
 title: Latest Posts
 description: "reallyseth.com"
 tags: [blog]
+preheadline: I am a mobile consultant specializing in iOS technologies. I've helped international startups and established businesses alike serve their clients through custom mobile applications. If you would like to discuss a project, send me an email at &#105;&#110;&#102;&#111;&#064;&#114;&#101;&#097;&#108;&#108;&#121;&#115;&#101;&#116;&#104;&#046;&#099;&#111;&#109;.
 ---
-
 <ul class="post-list">
 {% for post in site.posts limit:10 %} 
   <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span></a></article></li>
